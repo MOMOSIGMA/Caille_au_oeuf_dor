@@ -1,0 +1,418 @@
+:root {
+    --green-health: #4CAF50;
+    --blue-wellbeing: #81D4FA;
+    --orange-flavor: #FF9800;
+    --golden: #FFD700;
+    --text-dark: #333;
+    --bg-light: #F9F9F9;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    line-height: 1.3;
+    font-size: 0.8rem;
+}
+
+header {
+    background-color: var(--green-health);
+    color: white;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--golden);
+    margin-bottom: 0.2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--golden);
+}
+
+section {
+    padding: 0.5rem;
+    max-width: 100%;
+    margin: 0 auto;
+    animation: fadeIn 0.7s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#hero {
+    background-color: var(--blue-wellbeing);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Fond fixé pour éviter l'effet de glissement */
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    filter: blur(3px);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+}
+
+#hero h1 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+#hero .slogan {
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--orange-flavor);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--orange-flavor);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.75rem;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+}
+
+.cta-button:hover {
+    background-color: var(--golden);
+}
+
+.cta-button.small {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s;
+    display: block;
+    margin: 0 auto;
+}
+
+img:hover {
+    transform: scale(1.03);
+}
+
+#bienfaits img {
+    max-width: 80%;
+    margin: 0.4rem auto;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.benefits-list svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.3rem;
+    fill: var(--green-health);
+    flex-shrink: 0;
+}
+
+.recipes-container, .products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+    justify-items: center;
+}
+
+.recipe-card, .product-card {
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 130px;
+    text-align: center;
+}
+
+.recipe-card img, .product-card img {
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.recipe-card h3, .product-card h3 {
+    color: var(--orange-flavor);
+    font-size: 0.85rem;
+    margin: 0.3rem 0;
+}
+
+.recipe-card p, .product-card p {
+    font-size: 0.65rem;
+}
+
+.product-card .price {
+    font-size: 0.9rem;
+    color: var(--golden);
+    font-weight: bold;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem;
+    font-size: 0.75rem;
+}
+
+.contact-info svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.3rem;
+    fill: var(--golden);
+    flex-shrink: 0;
+}
+
+.social-sidebar {
+    position: fixed;
+    top: 50%;
+    right: 3px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 1000;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.social-icon img {
+    width: 36px;
+    height: 36px;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+
+.social-icon.whatsapp {
+    background-color: #25D366;
+}
+
+.social-icon.tiktok {
+    background-color: #000000;
+}
+
+.social-icon.facebook {
+    background-color: #1877F2;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 90%;
+    width: 220px; /* Réduit pour mobile */
+    position: relative; /* Fixé, non déplaçable */
+    animation: popupFadeIn 0.5s ease-in;
+}
+
+@keyframes popupFadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.popup-mascot {
+    width: 50px; /* Réduit pour mobile */
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 0;
+}
+
+.popup-content h3 {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.popup-content p {
+    font-size: 0.65rem;
+}
+
+.popup-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--orange-flavor);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+
+.popup-close:hover {
+    background: var(--golden);
+}
+
+footer {
+    background-color: var(--green-health);
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.65rem;
+}
+
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+
+    .logo {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    nav ul {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 2rem;
+        max-width: 1200px;
+    }
+
+    #hero {
+        height: 400px;
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #hero .slogan {
+        font-size: 1.2rem;
+    }
+
+    #bienfaits img {
+        max-width: 50%;
+    }
+
+    .recipes-container, .products-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .recipe-card, .product-card {
+        max-width: 300px;
+        padding: 1rem;
+    }
+
+    .recipe-card img, .product-card img {
+        height: 200px;
+    }
+
+    .recipe-card h3, .product-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .recipe-card p, .product-card p {
+        font-size: 1rem;
+    }
+
+    .popup-content {
+        width: 400px;
+        padding: 2rem;
+    }
+
+    .popup-mascot {
+        width: 150px;
+        height: 150px;
+    }
+}
