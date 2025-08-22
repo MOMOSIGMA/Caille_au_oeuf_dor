@@ -183,9 +183,9 @@ footer {
 
 .popup-mascot {
     position: absolute;
-    top: -60px; /* Ajustez cette valeur pour positionner verticalement */
-    right: 20px; /* Ajustez cette valeur pour positionner horizontalement */
-    width: 80px; /* Réduit la taille de l'image */
+    top: -100px; /* Ajustez cette valeur pour positionner verticalement */
+    right: 60px; /* Ajustez cette valeur pour positionner horizontalement */
+    width: 140px; /* Réduit la taille de l'image */
     height: auto;
     z-index: 3;
     transform: scale(0.7); /* Réduit encore un peu la taille si nécessaire */
