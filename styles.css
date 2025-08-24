@@ -9,14 +9,18 @@ body {
 }
 
 header {
-    padding: 10px;
-    background-color: #000;
-    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    background: #000;
+    color: #FFF;
     z-index: 1000;
+    padding: 0 10px;
+    height: 90px;
 }
 
 nav a {
@@ -69,6 +73,10 @@ nav a:hover {
 
 .cta-button:hover {
     background-color: #FFD700;
+}
+
+.cta-button:active {
+    transform: scale(0.97);
 }
 
 .cta-button.small {
@@ -201,14 +209,22 @@ footer {
 
 /* Pour les écrans mobiles */
 @media (max-width: 768px) {
-    .popup-mascot {
-        width: 60px;
-        top: -50px;
-        right: 10px;
+    header {
+        flex-direction: row;
+        height: auto;
+        padding: 8px 5px;
     }
-
-    body {
-        padding-top: 250px; /* Ajuste selon la hauteur réelle du header sur mobile */
+    .burger {
+        margin-right: 10px;
+    }
+    #main-nav {
+        margin-right: 10px;
+    }
+    .header-titles h1 {
+        font-size: 1em;
+    }
+    .header-titles p {
+        font-size: 0.95em;
     }
 }
 
@@ -226,11 +242,19 @@ footer {
     padding: 18px 12px;
     text-align: center;
     transition: transform 0.2s;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.7s forwards;
 }
 .benefit-card:hover {
     transform: translateY(-6px) scale(1.04);
     box-shadow: 0 6px 18px rgba(255,182,28,0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
+.benefit-card:nth-child(1) { animation-delay: 0.1s; }
+.benefit-card:nth-child(2) { animation-delay: 0.2s; }
+.benefit-card:nth-child(3) { animation-delay: 0.3s; }
+.benefit-card:nth-child(4) { animation-delay: 0.4s; }
 .benefit-icon {
     width: 48px;
     height: 48px;
@@ -254,10 +278,136 @@ footer {
     margin-bottom: 6px;
 }
 @media (max-width: 600px) {
-    .benefits-grid {
-        grid-template-columns: 1fr;
+    .benefit-card {
+        animation-duration: 0.4s;
+        /* ou même: animation: none; pour désactiver */
     }
-    .nutrition-box {
-        max-width: 100%;
+    .popup-content {
+        width: 90vw;
+        max-width: 350px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        position: fixed;
+        margin: 0;
     }
+    .popup-mascot {
+        position: static;
+        display: block;
+        margin: 0 auto 10px auto;
+    }
+}
+
+/* Animation d’apparition pour les cartes de bienfaits */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation d’apparition du pop-up */
+.popup-overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+.popup-overlay[style*="display: flex"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.burger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #FFF;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 2001;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .burger { display: block; }
+    #main-nav {
+        display: none;
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 2000;
+    }
+    #main-nav.open { display: flex; }
+    header nav a {
+        margin: 15px 0;
+        font-size: 1.2em;
+    }
+}
+
+.avis-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+    margin: 20px 0;
+}
+.avis-card {
+    background: #fff;
+    border-left: 6px solid #FFD700;
+    border-radius: 18px 6px 18px 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 18px 18px 14px 18px;
+    max-width: 400px;
+    min-width: 0;
+    text-align: left;
+    font-size: 1em;
+    position: relative;
+}
+.avis-card .avis-nom {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.avis-card .avis-note {
+    color: #FFD700;
+    font-size: 1.1em;
+    margin-bottom: 6px;
+}
+.avis-card .avis-texte {
+    font-style: italic;
+}
+@media (max-width: 600px) {
+    .avis-list {
+        gap: 10px;
+    }
+    .avis-card {
+        max-width: 95vw;
+        font-size: 0.95em;
+        padding: 12px 10px 10px 12px;
+    }
+}
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    z-index: 3000;
+    background: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    cursor: pointer;
+    display: none;
+    transition: opacity 0.3s;
+}
+#scrollTopBtn.show {
+    display: block;
+    opacity: 1;
 }
