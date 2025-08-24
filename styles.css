@@ -11,7 +11,7 @@ body {
 header {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
@@ -210,21 +210,29 @@ footer {
 /* Pour les écrans mobiles */
 @media (max-width: 768px) {
     header {
-        flex-direction: row;
         height: auto;
+        flex-direction: row;
         padding: 8px 5px;
     }
     .burger {
-        margin-right: 10px;
+        display: block;
     }
     #main-nav {
-        margin-right: 10px;
+        display: none;
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 2000;
     }
-    .header-titles h1 {
-        font-size: 1em;
+    #main-nav.open {
+        display: flex;
     }
-    .header-titles p {
-        font-size: 0.95em;
+    .header-titles {
+        text-align: center;
+        width: 100%;
     }
 }
 
@@ -284,7 +292,9 @@ footer {
     }
     .popup-content {
         width: 90vw;
-        max-width: 350px;
+        max-width: 320px;
+        padding: 18px 8px 12px 8px;
+        font-size: 1em;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -292,9 +302,8 @@ footer {
         margin: 0;
     }
     .popup-mascot {
-        position: static;
-        display: block;
-        margin: 0 auto 10px auto;
+        width: 120px;
+        margin-bottom: 10px;
     }
 }
 
@@ -323,14 +332,26 @@ footer {
     border: none;
     font-size: 2em;
     color: #FFF;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    z-index: 2001;
     cursor: pointer;
+    margin-right: 15px;
+    position: relative;
+    z-index: 2001;
 }
+
+.header-titles {
+    flex: 1;
+    text-align: center;
+}
+
+#main-nav {
+    display: flex;
+    gap: 15px;
+}
+
 @media (max-width: 768px) {
-    .burger { display: block; }
+    .burger {
+        display: block;
+    }
     #main-nav {
         display: none;
         flex-direction: column;
@@ -341,10 +362,17 @@ footer {
         width: 100%;
         z-index: 2000;
     }
-    #main-nav.open { display: flex; }
-    header nav a {
-        margin: 15px 0;
-        font-size: 1.2em;
+    #main-nav.open {
+        display: flex;
+    }
+    .header-titles {
+        text-align: center;
+        width: 100%;
+    }
+    header {
+        height: auto;
+        flex-direction: row;
+        padding: 8px 5px;
     }
 }
 
