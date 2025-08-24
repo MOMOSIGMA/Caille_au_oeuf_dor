@@ -1,77 +1,77 @@
-<!DOCTYPE html>op-up après 5 secondes
-<html lang="fr">opup, 5000);
-<head>
-    <meta charset="UTF-8">le pop-up
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Commandez vos œufs de caille bio et chair de caille à Dakar. Livraison rapide, prix abordables, bienfaits nutritionnels garantis. Élevage local, produits naturels, service WhatsApp.">
-    <meta name="keywords" content="œufs de caille, chair de caille, bio, santé, Dakar, ferme, produits naturels">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://caille-oeuf-dakar.netlify.app/">
-    <title>Œufs de Caille Bio à Dakar – Livraison Rapide | Caille au Oeuf d'Or</title>
-    <link rel="icon" type="image/webp" href="images/favicon.webp">
+// Affiche le pop-up après 5 secondes
+setTimeout(showPopup, 5000);
+
+// Fonction pour afficher le pop-up
+function showPopup() {
+    document.getElementById('order-popup').style.display = 'flex';
 }
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Œufs de Caille Bio à Dakar | Caille au Oeuf d'Or">
-    <meta property="og:description" content="Vente d'œufs et chair de caille bio à Dakar. Boostez votre santé avec nos produits naturels, frais et locaux.">
-    <meta property="og:image" content="https://caille-oeuf-dakar.netlify.app/images/panier-oeufs.webp">
-    <meta property="og:url" content="https://caille-oeuf-dakar.netlify.app/">
-    <meta property="og:type" content="website">e('href')).scrollIntoView({
+
+// Fonction pour fermer le pop-up
+function closePopup() {
+    document.getElementById('order-popup').style.display = 'none';
+}
+
+// Navigation fluide vers les sections
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Œufs de Caille Bio à Dakar | Caille au Oeuf d'Or">
-    <meta name="twitter:description" content="Vente d'œufs et chair de caille bio à Dakar. Boostez votre santé avec nos produits naturels, frais et locaux.">
-    <meta name="twitter:image" content="https://caille-oeuf-dakar.netlify.app/images/panier-oeufs.webp">
+        });
+    });
+});
+
+// Menu burger
 const burgerBtn = document.getElementById('burger-btn');
-    <link rel="stylesheet" href="styles.css">-nav');
-    <script type="application/ld+json">=> {
-{   mainNav.classList.toggle('open');
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Caille au Oeuf d'Or",lien
-  "image": "https://caille-oeuf-dakar.netlify.app/images/panier-oeufs.webp",
-  "address": {entListener('click', () => mainNav.classList.remove('open'));
-    "@type": "PostalAddress",
-    "streetAddress": "Sacré Coeur 3 VDN",
-    "addressLocality": "Dakar",n dehors
-    "addressCountry": "SN"'click', function(e) {
-  },if (
-  "telephone": "+221771463012",ins('open') &&
-  "url": "https://caille-oeuf-dakar.netlify.app/",
-  "priceRange": "1500-3000 CFA",
-  "description": "Vente d'œufs de caille bio et chair de caille à Dakar. Livraison rapide, produits locaux et naturels."
-}       mainNav.classList.remove('open');
-</script>
-</head>
-<body>
-    <header>nts dynamiques
-    <button class="burger" id="burger-btn" aria-label="Ouvrir le menu">&#9776;</button>
-    <div class="header-titles"> texte: "Des œufs délicieux et un service rapide. Je recommande à 100% !" },
-        <h1> Œufs et Chair de Caille à Dakar</h1>que je consomme ces œufs, je me sens en meilleure forme." },
-        <p>Œufs et Chair Bio</p>xte: "Très bon goût, livraison à l'heure. Merci !" },
-    </div> "Cheikh N.", note: 5, texte: "La chair de caille est tendre et savoureuse. Bravo !" }
-    <nav id="main-nav">
-        <a href="#bienfaits">Bienfaits</a>avis-list');
-        <a href="#recettes">Recettes</a>
-        <a href="#produits">Produits</a>'div');
-        <a href="#contact">Contact</a>
-    </nav>nnerHTML = `
-</header>div class="avis-nom">${a.nom}</div>
+const mainNav = document.getElementById('main-nav');
+burgerBtn.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+});
+
+// Ferme le menu au clic sur un lien
+mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mainNav.classList.remove('open'));
+});
+
+// Ferme le menu si on clique en dehors
+document.addEventListener('click', function(e) {
+    if (
+        mainNav.classList.contains('open') &&
+        !mainNav.contains(e.target) &&
+        e.target !== burgerBtn
+    ) {
+        mainNav.classList.remove('open');
+    }
+});
+
+// Avis clients dynamiques
+const avis = [
+    { nom: "Fatou D.", note: 5, texte: "Des œufs délicieux et un service rapide. Je recommande à 100% !" },
+    { nom: "Mamadou S.", note: 5, texte: "Depuis que je consomme ces œufs, je me sens en meilleure forme." },
+    { nom: "Awa B.", note: 4, texte: "Très bon goût, livraison à l'heure. Merci !" },
+    { nom: "Cheikh N.", note: 5, texte: "La chair de caille est tendre et savoureuse. Bravo !" }
+];
+const avisList = document.getElementById('avis-list');
+avis.forEach(a => {
+    const card = document.createElement('div');
+    card.className = 'avis-card';
+    card.innerHTML = `
+        <div class="avis-nom">${a.nom}</div>
         <div class="avis-note">${'★'.repeat(a.note)}${'☆'.repeat(5-a.note)}</div>
-    <section class="hero" id="hero">texte}</div>
-        <h2>Ferme Moderne à Dakar</h2>
-        <p class="slogan">Boostez votre santé naturellement avec nos œufs de caille frais.</p>
-        <a href="https://wa.me/762641751?text=Je%20veux%20commander%20des%20œufs%20de%20caille" class="cta-button">Commandez Maintenant !</a>
-        <img src="images/panier-oeufs.webp" alt="Panier d'œufs de caille bio frais à Dakar">
-    </section>nter en haut
-<!-- À placer dans une section pertinente -->rollTopBtn');
-<p class="info-seo">ner('scroll', () => {
-  Notre ferme à Dakar propose des œufs de caille bio et de la chair de caille, élevés localement. Acheter vos œufs de caille à Dakar, c’est choisir la qualité, la fraîcheur et le soutien à l’élevage local.<br>
-  <strong>Prix œufs de caille Sénégal :</strong> livraison rapide sur Dakar et environs.
-</p>} else {
-    <section id="bienfaits">remove('show');
-        <h2>Bienfaits et Valeur Nutritionnelle</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card"> => {
-                <img src="images/energie.webp" alt="Énergie" class="benefit-icon">
-                <h3>Énergie & Vitalité</h3>                <p>Protéines pour sportifs, enfants et fatigués.</p>            </div>            <div class="benefit-card">                <img src="images/immunite.webp" alt="Immunité" class="benefit-icon">                <h3>Immunité Renforcée</h3>                <p>Vitamines A, B, C, D + zinc et fer.</p>            </div>            <div class="benefit-card">                <img src="images/memoire.webp" alt="Mémoire" class="benefit-icon">                <h3>Mémoire & Concentration</h3>                <p>Vitamine B12 pour un cerveau au top.</p>            </div>            <div class="benefit-card">                <img src="images/sexualite.webp" alt="Santé sexuelle" class="benefit-icon">                <h3>Santé Sexuelle</h3>                <p>Aphrodisiaques naturels.</p>            </div>            <!-- Ajoute d'autres cartes selon tes besoins -->        </div>        <div class="nutrition-box">            <h3>Valeur Nutritionnelle</h3>            <ul>                <li><strong>Calories :</strong> 123 kcal / 92g</li>                <li><strong>Protéines :</strong> 20g</li>                <li><strong>Fer :</strong> Riche</li>            </ul>            <p><em>À consommer crus (1-5/jour) ou bouillis (max 5 min).</em></p>        </div>        <img src="images/quail.webp" alt="Œufs de caille bio et chair de caille à Dakar" class="content-image">    </section>    <section id="recettes">        <h2>Quelques Recettes pour Profiter des Bienfaits</h2>        <div class="recipes-container">            <div class="recipe-card">                <img src="images/recipe-eggs.webp" alt="Salade aux œufs de caille bio">                <h3>Salade aux Oeufs de Caille</h3>                <p>Faites bouillir 12 œufs, ajoutez à une salade verte.</p>            </div>            <div class="recipe-card">                <img src="images/recipe-meat.webp" alt="Caille grillée aux herbes fraîches">                <h3>Caille Grillée aux Herbes</h3>                <p>Marinez avec huile d'olive, thym, grillez 10-15 min.</p>            </div>            <div class="recipe-card">                <img src="images/recipe-mix.webp" alt="Mélange œufs de caille et miel">                <h3>Mélange Œufs + Miel</h3>                <p>Mélangez œufs crus avec miel, consommez à jeun.</p>            </div>            <div class="recipe-card">                <img src="images/recipe-omelette.webp" alt="Omelette de caille bio">                <h3>Omelette de Caille</h3>                <p>Battez œufs avec légumes, cuisez en omelette.</p>            </div>            <div class="recipe-card">                <img src="images/recipe-pastry.webp" alt="Pâtisserie enrichie aux œufs de caille">                <h3>Pâtisserie Enrichie</h3>                <p>Intégrez œufs dans vos pâtisseries.</p>            </div>        </div>    </section>    <section id="produits">        <h2>Nos Produits & Prix</h2>        <div class="products-container">            <div class="product-card">                <img src="images/product-eggs.webp" alt="Plateau de 30 œufs de caille bio">                <h3>Plateau de 30 Oeufs</h3>                <p>Œufs bio et sains.</p>                <p class="price">3000 FCFA</p>                <a href="https://wa.me/762641751?text=Je%20veux%20commander%201%20plateau%20de%2030%20œufs" class="cta-button small">Commander</a>            </div>            <div class="product-card">                <img src="images/product-quail.webp" alt="Caille de chair bio à Dakar">                <h3>Caille de Chair (Unité)</h3>                <p>Chair nutritive.</p>                <p class="price">1500 FCFA</p>                <a href="https://wa.me/762641751?text=Je%20veux%20commander%201%20caille%20de%20chair" class="cta-button small">Commander</a>            </div>        </div>    </section>    <section id="contact">        <h2>Contact et Localisation</h2>        <p>Localisation: Sacré Coeur 3 VDN, Dakar</p>        <p>Pour appel: <a href="tel:771463012">771463012</a></p>        <p>WhatsApp: <a href="https://wa.me/762641751">762641751</a></p>        <div class="social-icons">            <a href="https://wa.me/762641751" aria-label="WhatsApp"><img src="images/whatsapp-icon.webp" alt="Contact WhatsApp Caille au Oeuf d'Or"></a>            <a href="#" aria-label="TikTok"><img src="images/tiktok-icon.webp" alt="TikTok Caille au Oeuf d'Or"></a>            <a href="#" aria-label="Facebook"><img src="images/facebook-icon.webp" alt="Facebook Caille au Oeuf d'Or"></a>        </div>    </section>    <section id="avis">        <h2>Ils nous font confiance</h2>        <div id="avis-list" class="avis-list"></div>    </section>    <section id="conseils">  <h2>Conseils et Astuces</h2>  <ul>    <li><strong>10 bienfaits des œufs de caille pour la santé à Dakar</strong></li>    <li><strong>Où acheter des œufs de caille bio à Dakar ?</strong></li>    <li><strong>Recettes sénégalaises avec des œufs de caille</strong></li>  </ul>  <p>Retrouvez bientôt nos articles pour tout savoir sur les œufs de caille !</p></section>    <footer>        <p>© 2025 Caille au Oeuf d'Or. Tous droits réservés.</p>    </footer>    <div class="popup-overlay" id="order-popup">        <div class="popup-content" id="draggable-popup">            <button class="popup-close" onclick="closePopup()" aria-label="Fermer la fenêtre">×</button>            <img src="images/mascot.webp" alt="Mascotte Caille au Oeuf d'Or" class="popup-mascot">            <h3>Boostez Votre Santé Aujourd’hui !</h3>            <p>Commandez nos œufs et cailles bio.</p>            <a href="https://wa.me/762641751?text=Je%20veux%20commander" class="cta-button">Commander via WhatsApp</a>        </div>    </div>    <button id="scrollTopBtn" aria-label="Remonter en haut">⬆️</button>    <script src="script.js"></script></body></html>
+        <div class="avis-texte">${a.texte}</div>
+    `;
+    avisList.appendChild(card);
+});
+
+// Bouton remonter en haut
+const scrollBtn = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollBtn.classList.add('show');
+    } else {
+        scrollBtn.classList.remove('show');
+    }
+});
+scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
