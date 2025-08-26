@@ -52,26 +52,49 @@ const avis = [
     { nom: "Cheikh N.", note: 5, texte: "La chair de caille est tendre et savoureuse. Bravo !" }
 ];
 const avisList = document.getElementById('avis-list');
-avis.forEach(a => {
-    const card = document.createElement('div');
-    card.className = 'avis-card';
-    card.innerHTML = `
-        <div class="avis-nom">${a.nom}</div>
-        <div class="avis-note">${'★'.repeat(a.note)}${'☆'.repeat(5-a.note)}</div>
-        <div class="avis-texte">${a.texte}</div>
-    `;
-    avisList.appendChild(card);
+if (avisList) {
+    avis.forEach(a => {
+        const card = document.createElement('div');
+        card.className = 'avis-card';
+        card.innerHTML = `
+            <div class="avis-nom">${a.nom}</div>
+            <div class="avis-note">${'★'.repeat(a.note)}${'☆'.repeat(5-a.note)}</div>
+            <div class="avis-texte">${a.texte}</div>
+        `;
+        avisList.appendChild(card);
+    });
+}
+
+// Affichage/masquage de la vidéo au scroll (une seule fois)
+const videoContainer = document.getElementById('video-caille-container');
+const video = document.getElementById('video-caille');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+        if (videoContainer) videoContainer.style.display = 'none';
+    } else {
+        if (videoContainer) {
+            videoContainer.style.display = 'flex';
+            // Remet la vidéo au début et relance la lecture à chaque retour en haut
+            if (video) {
+                video.currentTime = 0;
+                video.play();
+            }
+        }
+    }
 });
 
 // Bouton remonter en haut
 const scrollBtn = document.getElementById('scrollTopBtn');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollBtn.classList.add('show');
-    } else {
-        scrollBtn.classList.remove('show');
-    }
-});
-scrollBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (scrollBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollBtn.classList.add('show');
+        } else {
+            scrollBtn.classList.remove('show');
+        }
+    });
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}

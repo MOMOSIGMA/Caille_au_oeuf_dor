@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    padding-top: 150px; /* Ajustez selon la hauteur de votre header */
+    padding-top: 200px; /* Ajustez selon la hauteur de votre header */
 }
 
 header {
@@ -480,4 +480,26 @@ footer {
 #scrollTopBtn.show {
     display: block;
     opacity: 1;
+}
+
+.video-caille {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    background: #FFB61C !important;
+}
+
+.video-caille video {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    background: #FFB61C !important;
+    display: block;
+}
+@media (max-width: 500px) {
+    .video-caille video {
+        max-width: 100px;
+    }
 }
