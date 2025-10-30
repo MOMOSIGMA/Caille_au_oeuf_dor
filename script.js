@@ -98,3 +98,35 @@ if (scrollBtn) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
+
+// Google Analytics events helper
+function gaEvent(name, params) {
+    if (window.gtag) gtag('event', name, params || {});
+}
+
+// CTA / WhatsApp clicks
+document.querySelectorAll('.cta-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const href = btn.getAttribute('href') || '';
+        if (href.includes('wa.me') || href.includes('tel:')) {
+            gaEvent('contact_whatsapp_click', { label: href });
+        } else {
+            gaEvent('cta_click', { label: href || btn.textContent.trim() });
+        }
+    });
+});
+
+// Mesure ouverture du popup (wrap de showPopup si défini)
+if (typeof window.showPopup === 'function') {
+    const _origShowPopup = window.showPopup;
+    window.showPopup = function() {
+        gaEvent('popup_open');
+        return _origShowPopup.apply(this, arguments);
+    };
+}
+
+// Vidéo : play event
+const _vid = document.getElementById('video-caille');
+if (_vid) {
+    _vid.addEventListener('play', () => gaEvent('video_play', { title: _vid.currentSrc || 'video-caille' }));
+}
