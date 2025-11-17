@@ -130,3 +130,36 @@ const _vid = document.getElementById('video-caille');
 if (_vid) {
     _vid.addEventListener('play', () => gaEvent('video_play', { title: _vid.currentSrc || 'video-caille' }));
 }
+
+// Lightbox simple pour la galerie
+(function() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    if (!galleryItems.length) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<span class="lightbox-close" aria-label="Fermer">✕</span><img alt="Agrandir la photo">';
+    document.body.appendChild(overlay);
+
+    const overlayImg = overlay.querySelector('img');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+
+    galleryItems.forEach(img => {
+        img.addEventListener('click', () => {
+            overlayImg.src = img.src;
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+        document.body.style.overflow = '';
+    }
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target === closeBtn) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+})();
