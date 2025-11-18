@@ -170,7 +170,7 @@
         </div>
     </section>
 
-    <!-- Galerie ferme (ajoutée) -->
+    <!-- Galerie ferme (existante) -->
     <section id="galerie-ferme" class="galerie-ferme">
       <h2>Notre ferme</h2>
       <p class="galerie-texte">Quelques photos de notre ferme à Dakar.</p>
@@ -182,47 +182,31 @@
       </div>
     </section>
 
-    <!-- Déplacer ici : Contact puis Avis (apparaissent après la galerie) -->
-    <section id="contact">
-        <h2>Contact et Localisation</h2>
-        <p>Localisation: Sacré Coeur 3 VDN, Dakar</p>
-        <p>Pour appel: <a href="tel:771463012">771463012</a></p>
-        <p>WhatsApp: <a href="https://wa.me/762641751">762641751</a></p>
-        <div class="social-icons">
-            <a href="https://wa.me/762641751" aria-label="WhatsApp"><img src="images/whatsapp-icon.webp" alt="Contact WhatsApp Caille au Oeuf d'Or"></a>
-            <a href="#" aria-label="TikTok"><img src="images/tiktok-icon.webp" alt="TikTok Caille au Oeuf d'Or"></a>
-            <a href="#" aria-label="Facebook"><img src="images/facebook-icon.webp" alt="Facebook Caille au Oeuf d'Or"></a>
-        </div>
-    </section>
-
+    <!-- Section Avis (à insérer ici) -->
     <section id="avis">
-        <h2>Ils nous font confiance</h2>
-        <div id="avis-list" class="avis-list"></div>
+      <h2>Ils nous font confiance</h2>
+      <div id="avis-list" class="avis-list"></div>
     </section>
 
-    <section id="conseils">
-  <h2>Conseils et Astuces</h2>
-  <ul>
-    <li><strong>10 bienfaits des œufs de caille pour la santé à Dakar</strong></li>
-    <li><strong>Où acheter des œufs de caille bio à Dakar ?</strong></li>
-    <li><strong>Recettes sénégalaises avec des œufs de caille</strong></li>
-  </ul>
-  <p>Retrouvez bientôt nos articles pour tout savoir sur les œufs de caille !</p>
-</section>
+    <!-- === Contact (déplacé ici, juste avant le footer) === -->
+    <section id="contact" class="contact-section">
+      <h2>Contact</h2>
+      <p>Localisation : Sacré Coeur 3 VDN, Dakar</p>
+      <p>Téléphone : <a href="tel:+221771463012">+221 77 146 3012</a></p>
+      <p>WhatsApp : <a href="https://wa.me/221762641751">+221 76 264 1751</a></p>
+      <div class="social-icons">
+        <a href="https://wa.me/221762641751" aria-label="WhatsApp"><img src="images/whatsapp-icon.webp" alt="WhatsApp"></a>
+        <a href="#" aria-label="TikTok"><img src="images/tiktok-icon.webp" alt="TikTok"></a>
+        <a href="#" aria-label="Facebook"><img src="images/facebook-icon.webp" alt="Facebook"></a>
+      </div>
+    </section>
 
-    <!-- Déplacement du popup ici -->
-    <div class="popup-overlay" id="order-popup">
-        <div class="popup-content" id="draggable-popup">
-            <button class="popup-close" onclick="closePopup()" aria-label="Fermer la fenêtre">×</button>
-            <img src="images/mascot.webp" alt="Mascotte Caille au Oeuf d'Or" class="popup-mascot">
-            <h3>Boostez Votre Santé Aujourd’hui !</h3>
-            <p>Commandez nos œufs et cailles bio.</p>
-            <a href="https://wa.me/762641751?text=Je%20veux%20commander" class="cta-button">Commander via WhatsApp</a>
-        </div>
-    </div>
+    <!-- Footer noir -->
+    <footer>
+      <div class="footer-inner">© 2025 Caille au Oeuf d'Or — Tous droits réservés</div>
+    </footer>
 
-    <button id="scrollTopBtn" aria-label="Remonter en haut">⬆️</button>
-
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
